@@ -42,7 +42,7 @@ let rootReducer = ({counter, power}, action) => ({
 Creating the main app:
 
 ```javascript
-import StoreProvider, {connect} from '...';
+import StoreProvider from 'fluxy';
 
 const App = () => (
 	<StoreProvider initialStore={initialStore} rootReducer={rootReducer}>
@@ -54,6 +54,8 @@ const App = () => (
 
 Creating sub-components and connecting them to the store:
 ```javascript
+import {connect} from 'fluxy';
+
 const Counter = connect(({counter}) => ({counter}))(({counter, dispatch}) => (
 	<button onClick={() => dispatch({type: 'INCREMENT'})}>
 		{counter}
