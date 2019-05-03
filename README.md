@@ -61,11 +61,19 @@ const Counter = connect(({counter}) => ({counter}))(({counter, dispatch}) => (
 		{counter}
 	</button>
 ));
+```
 
-const Power = connect(({power}) => ({power}))(({power, dispatch}) => (
-	<button onClick={() => dispatch({type: 'TOGGLE'})}>
+```javascript
+import {connect} from 'fluxy';
+
+let mapStateToProps = ({power}) => ({power}),
+	mapDispatchToProps = dispatch => ({
+		toggleState: () => dispatch({type: 'TOGGLE'})
+	});
+
+const Power = connect(mapStateToProps, mapDispatchToProps)(({power, toggleState}) => (
+	<button onClick={toggleState}>
 		{power ? 'ON' : 'OFF'}
 	</button>
 ));
-
 ```
